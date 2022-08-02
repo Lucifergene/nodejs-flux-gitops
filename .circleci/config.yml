@@ -18,11 +18,10 @@ jobs:
       - run:
           name: Install argocd
           command: |
-            URL=https://<< parameters.server >>/download/argocd-linux-amd64
-            curl --insecure -L $URL | tar zx
-            [ -w /usr/local/bin ] && SUDO="" || SUDO=sudo
-            $SUDO chmod +x ./argocd-linux-amd64
-            $SUDO mv ./argocd-linux-amd64 /usr/local/bin
+          URL=https://<< parameters.server >>/download/argocd-linux-amd64
+          [ -w /usr/local/bin ] && SUDO="" || SUDO=sudo
+          $SUDO curl --insecure -sSL -o /usr/local/bin/argocd $URL
+          $SUDO chmod +x /usr/local/bin/argocd
       - run:
           name: ArgoCD CLI login
           command: argocd login << parameters.server >> --insecure --username admin --password JPPi9cGNkEPetjOF
