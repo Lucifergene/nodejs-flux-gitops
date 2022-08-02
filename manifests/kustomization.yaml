@@ -8,4 +8,4 @@ namespace: nodejs
 images:
 - name: aks-nodejs-argocd
   newName: avik6028/aks-nodejs-argocd
-  newTag: 24e870bc6fff4d313d969d84778b223da64361e7
+  newTag: b164237e19f7ed17fd4fbd32f82429dafc43a244
