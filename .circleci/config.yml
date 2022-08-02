@@ -14,6 +14,14 @@ jobs:
         description: |
           Server IP of of Argo CD
         type: string
+      username:
+        description: |
+          Username for ArgoCD
+        type: string
+      password:
+        description: |
+          Password for Argo CD
+        type: string
     steps:
       - run:
           name: Install ArgoCD CLI
@@ -24,7 +32,7 @@ jobs:
             $SUDO chmod +x /usr/local/bin/argocd
       - run:
           name: ArgoCD CLI login
-          command: argocd login << parameters.server >> --insecure --username admin --password JPPi9cGNkEPetjOF
+          command: argocd login << parameters.server >> --insecure --username << parameters.username >> --password << parameters.password >>
       - run:
           name: Manual sync
           command: argocd app sync $APP_NAME
@@ -102,7 +110,9 @@ workflows:
           requires:
             - bump-docker-tag-kustomize
       - argocd-manual-sync:
-          server: 20.88.178.138
+          server: $ARGOCD_SERVER
+          username: $ARGOCD_USERNAME
+          password: $ARGOCD_PASSWORD
           requires:
             - argocd-configure
           
