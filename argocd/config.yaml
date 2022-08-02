@@ -8,7 +8,7 @@ spec:
     namespace: nodejs
     server: 'https://kubernetes.default.svc'
   source:
-    path: argocd
+    path: manifests
     repoURL: 'https://github.com/Lucifergene/aks-nodejs-argocd'
     targetRevision: HEAD
   project: default
