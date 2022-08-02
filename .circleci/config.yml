@@ -62,7 +62,7 @@ jobs:
           perform-login: true
           resource-group: << parameters.resource-group >>
       - kubernetes/create-or-update-resource:
-          resource-file-path: argocd/config.yaml
+          resource-file-path: argocd/manual-sync-config.yaml
 
   bump-docker-tag-kustomize:
     docker:
