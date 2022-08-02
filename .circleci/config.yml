@@ -16,7 +16,7 @@ jobs:
         type: string
     steps:
       - run:
-          name: Install argocd
+          name: Install ArgoCD CLI
           command: |
             URL=https://<< parameters.server >>/download/argocd-linux-amd64
             [ -w /usr/local/bin ] && SUDO="" || SUDO=sudo
@@ -74,7 +74,6 @@ jobs:
           command: |
             cd manifests
             kustomize edit set image $APP_NAME=$DOCKER_LOGIN/$APP_NAME:$CIRCLE_SHA1
-            kustomize build . > $APP_NAME.yaml
       - add_ssh_keys:
           fingerprints:
             - "$SSH_FINGERPRINT"
