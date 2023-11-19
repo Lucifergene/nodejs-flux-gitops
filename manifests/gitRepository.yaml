@@ -1,0 +1,11 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: nodejsapp
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: circleci-project-setup
+  url: https://github.com/Lucifergene/nodejs-flux-gitops
